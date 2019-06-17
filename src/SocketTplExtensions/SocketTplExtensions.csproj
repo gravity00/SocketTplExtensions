@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>SocketTplExtensions</RootNamespace>
+    <AssemblyTitle>SocketTplExtensions</AssemblyTitle>
+    <AssemblyName>SocketTplExtensions</AssemblyName>
+    <Description>Extension methods for using Task Parallel Library (TPL) with Socket.</Description>
+    <Product>SocketTplExtensions</Product>
+    <Company>Net.JoaoSimoes</Company>
+    <Copyright>Copyright © 2019 João Simões</Copyright>
+    <Authors>João Simões</Authors>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>../../tools/SocketTplExtensions.snk</AssemblyOriginatorKeyFile>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+    <SignAssembly>true</SignAssembly>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GenerateAssemblyTitleAttribute>true</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>true</GenerateAssemblyDescriptionAttribute>
+    <TargetFrameworks>net4.0;net4.5;netstandard1.0;netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>SocketTplExtensions</PackageId>
+    <PackageTags>sockets</PackageTags>
+    <PackageIconUrl></PackageIconUrl>
+    <PackageProjectUrl>https://github.com/gravity00/SocketTplExtensions</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/gravity00/SocketTplExtensions/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/gravity00/SocketTplExtensions</RepositoryUrl>
+    <GeneratePackageOnBuild Condition=" '$(BuildConfiguration)' == 'release' ">true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.19001</FileVersion>
+    <VersionPrefix>1.0.0-dev001</VersionPrefix>
+  </PropertyGroup>
+
+</Project>
