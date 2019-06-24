@@ -5,7 +5,13 @@ VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{71F8E757-9F43-43A6-B7FD-CCC80B9D503F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketTplExtensions", "src\SocketTplExtensions\SocketTplExtensions.csproj", "{BBD64357-27B4-49C1-86B6-FD306157E0F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocketTplExtensions", "src\SocketTplExtensions\SocketTplExtensions.csproj", "{BBD64357-27B4-49C1-86B6-FD306157E0F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "other", "other", "{808A2CAF-15CE-48B8-AC82-D8FD383AE5CF}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
