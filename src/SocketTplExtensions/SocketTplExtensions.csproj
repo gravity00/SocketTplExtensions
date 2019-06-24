@@ -18,7 +18,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GenerateAssemblyTitleAttribute>true</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyDescriptionAttribute>true</GenerateAssemblyDescriptionAttribute>
-    <TargetFrameworks>net4.0;net4.5;netstandard1.3;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net4.0;net4.5;net4.6.2</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -36,6 +36,7 @@
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0.19001</FileVersion>
     <VersionPrefix>1.0.0-dev001</VersionPrefix>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
 </Project>
