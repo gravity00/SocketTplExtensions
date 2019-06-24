@@ -111,5 +111,34 @@ namespace System.Net.Sockets
         };
 
         #endregion
+
+        #region AcceptAsync
+
+        /// <summary>
+        /// Begins an asynchronous operation to accept an incoming connection attempt.
+        /// </summary>
+        /// <param name="socket"></param>
+        /// <returns></returns>
+        public static Task<Socket> AcceptAsync(this Socket socket)
+        {
+            var tcs = new TaskCompletionSource<Socket>(socket);
+            socket.BeginAccept(BeginAcceptCallback, tcs);
+            return tcs.Task;
+        }
+
+        private static readonly AsyncCallback BeginAcceptCallback = ar =>
+        {
+            var tcs = (TaskCompletionSource<Socket>) ar.AsyncState;
+            try
+            {
+                tcs.TrySetResult(((Socket) tcs.Task.AsyncState).EndAccept(ar));
+            }
+            catch (Exception e)
+            {
+                tcs.TrySetException(e);
+            }
+        };
+
+        #endregion
     }
 }
