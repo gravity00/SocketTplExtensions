@@ -294,12 +294,12 @@ namespace System.Net.Sockets
         /// <param name="offset"></param>
         /// <param name="size"></param>
         /// <param name="socketFlags"></param>
-        /// <param name="remoteEP"></param>
+        /// <param name="endpoint"></param>
         /// <returns></returns>
-        public static Task<int> SendToAsync(this Socket socket, byte[] buffer, int offset, int size, SocketFlags socketFlags, EndPoint remoteEP)
+        public static Task<int> SendToAsync(this Socket socket, byte[] buffer, int offset, int size, SocketFlags socketFlags, EndPoint endpoint)
         {
             var tcs = new TaskCompletionSource<int>(socket);
-            socket.BeginSendTo(buffer, offset, size, socketFlags, remoteEP, BeginSendToCallback, tcs);
+            socket.BeginSendTo(buffer, offset, size, socketFlags, endpoint, BeginSendToCallback, tcs);
             return tcs.Task;
         }
 
