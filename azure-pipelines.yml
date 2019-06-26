@@ -13,11 +13,15 @@ variables:
   buildConfiguration: 'release'
 
 steps:
+- task: DotNetCoreInstaller@0
+  inputs:
+    version: '2.1.300'
+
 - script: dotnet restore
   displayName: 'dotnet restore'
 
 - script: dotnet build --configuration $(buildConfiguration) --no-restore
   displayName: 'dotnet build'
 
-- script: dotnet pack --output $(build.artifactStagingDirectory) --no-restore
+- script: dotnet pack --output $(build.artifactStagingDirectory) --configuration $(buildConfiguration) --no-restore
   displayName: 'dotnet pack'
