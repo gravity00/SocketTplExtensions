@@ -30,6 +30,7 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/gravity00/SocketTplExtensions</RepositoryUrl>
     <GeneratePackageOnBuild Condition=" '$(BuildConfiguration)' == 'release' ">true</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup>
