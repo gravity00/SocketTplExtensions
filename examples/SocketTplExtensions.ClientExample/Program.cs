@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace SocketTplExtensions.ClientExample
@@ -27,7 +30,41 @@ namespace SocketTplExtensions.ClientExample
 
         private static async Task StartClient()
         {
+            var ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
+            var ipAddress = ipHostInfo.AddressList[0];
+            var localEndPoint = new IPEndPoint(ipAddress, 11000);
 
+            while (true)
+            {
+                using (var socket = new Socket(SocketType.Stream, ProtocolType.Tcp))
+                {
+                    await socket.ConnectAsync(localEndPoint);
+
+                    Console.WriteLine("Sending request");
+
+                    var requestBytes = Encoding.ASCII.GetBytes($"ClientTime: {DateTimeOffset.Now:O}<EOF>");
+                    await socket.SendAsync(requestBytes, 0, requestBytes.Length, SocketFlags.None);
+
+                    var buffer = new byte[1024];
+                    var sb = new StringBuilder();
+
+                    while (true)
+                    {
+                        var receivedBytes = await socket.ReceiveAsync(buffer, 0, buffer.Length, SocketFlags.None);
+                        if (receivedBytes == 0)
+                            continue;
+
+                        var message = Encoding.ASCII.GetString(buffer, 0, receivedBytes);
+                        sb.Append(message);
+                        if (message.IndexOf("<EOF>", StringComparison.OrdinalIgnoreCase) > -1)
+                            break;
+                    }
+
+                    Console.WriteLine(sb.ToString());
+
+                    socket.Shutdown(SocketShutdown.Both);
+                }
+            }
         }
     }
 }
