@@ -17,4 +17,7 @@ steps:
   displayName: 'dotnet restore'
 
 - script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+  displayName: 'dotnet build'
+
+- script: dotnet pack --output $(build.artifactStagingDirectory) --no-build
+  displayName: 'dotnet pack'
