@@ -7,7 +7,7 @@ namespace System.Net.Sockets
     /// <summary>
     /// Extensions for <see cref="Socket"/>
     /// </summary>
-    public static class SocketExtensions
+    public static class SocketTplExtensions
     {
         #region ConnectAsync
 
