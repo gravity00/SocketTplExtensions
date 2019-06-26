@@ -14,6 +14,7 @@ variables:
 
 steps:
 - task: DotNetCoreInstaller@0
+  displayName: 'install dotnet sdk'
   inputs:
     version: '2.1.300'
 
@@ -25,3 +26,10 @@ steps:
 
 - script: dotnet pack --output $(build.artifactStagingDirectory) --configuration $(buildConfiguration) --no-restore
   displayName: 'dotnet pack'
+  
+- task: PublishBuildArtifacts@1
+  displayName: 'publish artifacts'
+  inputs:
+    pathtoPublish: '$(build.artifactStagingDirectory)'
+    artifactName: '$(build.definitionName)'
+    publishLocation: 'Container'
