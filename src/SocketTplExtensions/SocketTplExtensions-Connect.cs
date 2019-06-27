@@ -5,6 +5,8 @@ namespace System.Net.Sockets
 {
     public static partial class SocketTplExtensions
     {
+#if !NETSTANDARD2_0
+
         /// <summary>
         /// Begins an asynchronous request for a remote host connection.
         /// </summary>
@@ -73,5 +75,7 @@ namespace System.Net.Sockets
                 tcs.TrySetException(e);
             }
         };
+
+#endif
     }
 }
