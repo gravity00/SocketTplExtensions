@@ -5,6 +5,8 @@ namespace System.Net.Sockets
 {
     public static partial class SocketTplExtensions
     {
+#if !NETSTANDARD1_3
+
         /// <summary>
         /// Begins an asynchronous request to disconnect from a remote endpoint.
         /// </summary>
@@ -31,5 +33,7 @@ namespace System.Net.Sockets
                 tcs.TrySetException(e);
             }
         };
+
+#endif
     }
 }

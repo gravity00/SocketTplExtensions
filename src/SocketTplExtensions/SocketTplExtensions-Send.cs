@@ -18,7 +18,27 @@ namespace System.Net.Sockets
         public static Task<int> SendAsync(this Socket socket, byte[] buffer, int offset, int size, SocketFlags socketFlags)
         {
             var tcs = new TaskCompletionSource<int>(socket);
+
+#if NETSTANDARD1_3
+
+            var args = new SocketAsyncEventArgs
+            {
+                SocketFlags = socketFlags,
+                UserToken = tcs
+            };
+            args.SetBuffer(buffer, offset, size);
+            args.Completed += OnSendCompleted;
+            if (!socket.SendAsync(args))
+            {
+                tcs.TrySetSendResult(args);
+            }
+
+#else
+            
             socket.BeginSend(buffer, offset, size, socketFlags, BeginSendCallback, tcs);
+
+#endif
+
             return tcs.Task;
         }
 
@@ -40,6 +60,32 @@ namespace System.Net.Sockets
 
 #endif
 
+#if NETSTANDARD1_3
+
+        private static readonly EventHandler<SocketAsyncEventArgs> OnSendCompleted = (sender, args) =>
+        {
+            var tcs = (TaskCompletionSource<int>)args.UserToken;
+            tcs.TrySetSendResult(args);
+        };
+
+        private static void TrySetSendResult(this TaskCompletionSource<int> tcs, SocketAsyncEventArgs args)
+        {
+            if (args.SocketError == SocketError.Success)
+            {
+                tcs.SetResult(args.SendPacketsSendSize);
+            }
+            else if (args.ConnectByNameError == null)
+            {
+                tcs.TrySetException(new SocketException());
+            }
+            else
+            {
+                tcs.TrySetException(args.ConnectByNameError);
+            }
+        }
+
+#else
+
         private static readonly AsyncCallback BeginSendCallback = ar =>
         {
             var tcs = (TaskCompletionSource<int>) ar.AsyncState;
@@ -52,5 +98,7 @@ namespace System.Net.Sockets
                 tcs.TrySetException(e);
             }
         };
+
+#endif
     }
 }

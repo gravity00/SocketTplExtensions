@@ -5,6 +5,8 @@ namespace System.Net.Sockets
 {
     public static partial class SocketTplExtensions
     {
+#if !NETSTANDARD1_3
+
         /// <summary>
         /// Sends the file <paramref name="filename" /> to a connected <see cref="Socket" /> object using
         /// the <see cref="TransmitFileOptions.UseDefaultWorkerThread" /> flag.
@@ -48,5 +50,7 @@ namespace System.Net.Sockets
                 tcs.TrySetException(e);
             }
         };
+
+#endif
     }
 }
