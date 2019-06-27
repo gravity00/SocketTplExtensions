@@ -13,7 +13,7 @@ Install-Package SocketTplExtensions
 This library is compatible with the folowing frameworks:
 
 * .NET Framework 4.0
-* .NET Framework 4.4
+* .NET Framework 4.5
 * .NET Standard 1.3
 * .NET Standard 2.0
 
