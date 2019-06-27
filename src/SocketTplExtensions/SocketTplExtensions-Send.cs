@@ -22,6 +22,8 @@ namespace System.Net.Sockets
             return tcs.Task;
         }
 
+#if !NETSTANDARD2_0
+
         /// <summary>
         /// Sends data asynchronously to a connected <see cref="Socket"/>.
         /// </summary>
@@ -35,6 +37,8 @@ namespace System.Net.Sockets
             socket.BeginSend(buffers, socketFlags, BeginSendCallback, tcs);
             return tcs.Task;
         }
+
+#endif
 
         private static readonly AsyncCallback BeginSendCallback = ar =>
         {
