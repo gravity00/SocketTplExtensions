@@ -5,6 +5,8 @@ namespace System.Net.Sockets
 {
     public static partial class SocketTplExtensions
     {
+#if !NETSTANDARD2_0
+
         /// <summary>
         /// Begins an asynchronous operation to accept an incoming connection attempt.
         /// </summary>
@@ -29,5 +31,7 @@ namespace System.Net.Sockets
                 tcs.TrySetException(e);
             }
         };
+
+#endif
     }
 }
