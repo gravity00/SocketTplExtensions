@@ -22,6 +22,8 @@ namespace System.Net.Sockets
             return tcs.Task;
         }
 
+#if !NETSTANDARD2_0
+
         /// <summary>
         /// Begins to asynchronously receive data from a connected <see cref="Socket"/>.
         /// </summary>
@@ -35,6 +37,8 @@ namespace System.Net.Sockets
             socket.BeginReceive(buffers, socketFlags, BeginReceiveCallback, tcs);
             return tcs.Task;
         }
+
+#endif
 
         private static readonly AsyncCallback BeginReceiveCallback = ar =>
         {
