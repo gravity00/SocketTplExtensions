@@ -25,7 +25,7 @@
   <PropertyGroup>
     <PackageId>SocketTplExtensions</PackageId>
     <PackageTags>sockets</PackageTags>
-    <PackageIconUrl></PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/gravity00/SocketTplExtensions/master/logo.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/gravity00/SocketTplExtensions</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/gravity00/SocketTplExtensions/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
