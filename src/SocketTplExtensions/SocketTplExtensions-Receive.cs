@@ -22,7 +22,7 @@ namespace System.Net.Sockets
             return tcs.Task;
         }
 
-#if !NETSTANDARD2_0
+#if !NETSTANDARD
 
         /// <summary>
         /// Begins to asynchronously receive data from a connected <see cref="Socket"/>.
