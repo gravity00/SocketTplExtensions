@@ -23,7 +23,7 @@ using (var socket = new Socket(SocketType.Stream, ProtocolType.Tcp))
 {
   await socket.ConnectAsync("127.0.0.1", 12345);
   
-  var messageBytes = Encoding.ASCII.GetBytes($"Hello world!<EOF>");
+  var messageBytes = Encoding.ASCII.GetBytes("Hello world!<EOF>");
   await socket.SendAsync(messageBytes, 0, messageBytes.Length, SocketFlags.None);
   
   var responseBuffer = new byte[1024];
