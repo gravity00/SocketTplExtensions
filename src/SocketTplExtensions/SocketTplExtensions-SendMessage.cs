@@ -14,7 +14,7 @@ namespace System.Net.Sockets
         /// <param name="encoding"></param>
         /// <param name="socketFlags"></param>
         /// <returns></returns>
-        public static Task<int> SendMessage(this Socket socket, string message, Encoding encoding, SocketFlags socketFlags)
+        public static Task<int> SendMessageAsync(this Socket socket, string message, Encoding encoding, SocketFlags socketFlags)
         {
             NotNull(socket, nameof(socket));
             NotNull(message, nameof(message));
@@ -36,7 +36,7 @@ namespace System.Net.Sockets
         /// <param name="index"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public static Task<int> SendMessage(this Socket socket, char[] chars, int index, int count, 
+        public static Task<int> SendMessageAsync(this Socket socket, char[] chars, int index, int count, 
             Encoding encoding, SocketFlags socketFlags)
         {
             NotNull(socket, nameof(socket));
