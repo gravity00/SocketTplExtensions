@@ -6,6 +6,8 @@ namespace System.Net.Sockets
     /// </summary>
     public static partial class SocketTplExtensions
     {
+        private static readonly byte[] EmptyBuffer = new byte[0];
+
         private static void NotNull(object value, string paramName)
         {
             if (value == null) throw new ArgumentNullException(paramName);
