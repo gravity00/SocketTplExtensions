@@ -41,9 +41,9 @@ namespace SocketTplExtensions.ClientExample
                     await socket.ConnectAsync(localEndPoint);
 
                     Console.WriteLine("Sending request");
-
-                    var requestBytes = Encoding.ASCII.GetBytes($"ClientTime: {DateTimeOffset.Now:O}<EOF>");
-                    await socket.SendAsync(requestBytes, 0, requestBytes.Length, SocketFlags.None);
+                    
+                    await socket.SendMessageAsync(
+                        $"ClientTime: {DateTimeOffset.Now:O}<EOF>", Encoding.ASCII, SocketFlags.None);
 
                     var buffer = new byte[1024];
                     var sb = new StringBuilder();

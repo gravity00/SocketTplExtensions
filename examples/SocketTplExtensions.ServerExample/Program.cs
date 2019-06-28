@@ -76,9 +76,8 @@ namespace SocketTplExtensions.ServerExample
                     Console.WriteLine(data);
 
                     await Task.Delay(500);
-
-                    var echoBytes = Encoding.ASCII.GetBytes("ECHO: " + data);
-                    await handler.SendAsync(echoBytes, 0, echoBytes.Length, SocketFlags.None);
+                    
+                    await handler.SendMessageAsync("ECHO: " + data, Encoding.ASCII, SocketFlags.None);
                 }
                 catch (Exception e)
                 {
