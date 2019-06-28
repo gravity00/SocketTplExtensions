@@ -16,6 +16,8 @@ namespace System.Net.Sockets
         /// <returns></returns>
         public static Task ConnectAsync(this Socket socket, string host, int port)
         {
+            NotNull(socket, nameof(socket));
+
             var tcs = new TaskCompletionSource<bool>(socket);
             socket.BeginConnect(host, port, BeginConnectCallback, tcs);
             return tcs.Task;
@@ -30,6 +32,8 @@ namespace System.Net.Sockets
         /// <returns></returns>
         public static Task ConnectAsync(this Socket socket, IPAddress address, int port)
         {
+            NotNull(socket, nameof(socket));
+
             var tcs = new TaskCompletionSource<bool>(socket);
             socket.BeginConnect(address, port, BeginConnectCallback, tcs);
             return tcs.Task;
@@ -44,6 +48,8 @@ namespace System.Net.Sockets
         /// <returns></returns>
         public static Task ConnectAsync(this Socket socket, IPAddress[] addresses, int port)
         {
+            NotNull(socket, nameof(socket));
+
             var tcs = new TaskCompletionSource<bool>(socket);
             socket.BeginConnect(addresses, port, BeginConnectCallback, tcs);
             return tcs.Task;
@@ -57,6 +63,8 @@ namespace System.Net.Sockets
         /// <returns></returns>
         public static Task ConnectAsync(this Socket socket, EndPoint endpoint)
         {
+            NotNull(socket, nameof(socket));
+
             var tcs = new TaskCompletionSource<bool>(socket);
             socket.BeginConnect(endpoint, BeginConnectCallback, tcs);
             return tcs.Task;

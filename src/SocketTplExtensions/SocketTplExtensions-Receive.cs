@@ -17,6 +17,8 @@ namespace System.Net.Sockets
         /// <returns></returns>
         public static Task<int> ReceiveAsync(this Socket socket, byte[] buffer, int offset, int size, SocketFlags socketFlags)
         {
+            NotNull(socket, nameof(socket));
+
             var tcs = new TaskCompletionSource<int>(socket);
 
 #if NETSTANDARD1_3
@@ -53,6 +55,8 @@ namespace System.Net.Sockets
         /// <returns></returns>
         public static Task<int> ReceiveAsync(this Socket socket, IList<ArraySegment<byte>> buffers, SocketFlags socketFlags)
         {
+            NotNull(socket, nameof(socket));
+
             var tcs = new TaskCompletionSource<int>(socket);
             socket.BeginReceive(buffers, socketFlags, BeginReceiveCallback, tcs);
             return tcs.Task;

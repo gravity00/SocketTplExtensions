@@ -17,6 +17,8 @@ namespace System.Net.Sockets
         /// <returns></returns>
         public static Task<int> SendToAsync(this Socket socket, byte[] buffer, int offset, int size, SocketFlags socketFlags, EndPoint endpoint)
         {
+            NotNull(socket, nameof(socket));
+
             var tcs = new TaskCompletionSource<int>(socket);
 
 #if NETSTANDARD1_3

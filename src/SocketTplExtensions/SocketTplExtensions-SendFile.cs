@@ -16,6 +16,8 @@ namespace System.Net.Sockets
         /// <returns></returns>
         public static Task SendFileAsync(this Socket socket, string filename)
         {
+            NotNull(socket, nameof(socket));
+
             var tcs = new TaskCompletionSource<bool>(socket);
             socket.BeginSendFile(filename, BeginSendFileCallback, tcs);
             return tcs.Task;
@@ -32,6 +34,8 @@ namespace System.Net.Sockets
         /// <returns></returns>
         public static Task SendFileAsync(this Socket socket, string filename, byte[] preBuffer, byte[] postBuffer, TransmitFileOptions flags)
         {
+            NotNull(socket, nameof(socket));
+
             var tcs = new TaskCompletionSource<bool>(socket);
             socket.BeginSendFile(filename, preBuffer, postBuffer, flags, BeginSendFileCallback, tcs);
             return tcs.Task;

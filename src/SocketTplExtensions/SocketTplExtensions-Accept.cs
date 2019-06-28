@@ -14,6 +14,8 @@ namespace System.Net.Sockets
         /// <returns></returns>
         public static Task<Socket> AcceptAsync(this Socket socket)
         {
+            NotNull(socket, nameof(socket));
+
             var tcs = new TaskCompletionSource<Socket>(socket);
             socket.BeginAccept(BeginAcceptCallback, tcs);
             return tcs.Task;

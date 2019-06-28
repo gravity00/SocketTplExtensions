@@ -15,6 +15,8 @@ namespace System.Net.Sockets
         /// <returns></returns>
         public static Task DisconnectAsync(this Socket socket, bool reuseSocket)
         {
+            NotNull(socket, nameof(socket));
+
             var tcs = new TaskCompletionSource<bool>(socket);
             socket.BeginDisconnect(reuseSocket, BeginDisconnectCallback, tcs);
             return tcs.Task;
