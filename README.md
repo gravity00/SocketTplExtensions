@@ -35,8 +35,8 @@ using (var socket = new Socket(SocketType.Stream, ProtocolType.Tcp))
       continue;
       
     var response = Encoding.ASCII.GetString(responseBuffer, 0, receivedBytes);
-    sb.Append(message);
-    if (message.IndexOf("<EOF>", StringComparison.OrdinalIgnoreCase) > -1)
+    sb.Append(response);
+    if (response.IndexOf("<EOF>", StringComparison.OrdinalIgnoreCase) > -1)
       break;
   }
   
