@@ -17,6 +17,34 @@ This library is compatible with the folowing frameworks:
 * .NET Standard 1.3
 * .NET Standard 2.0
 
+## Extensions
+
+List of extension methods provided:
+
+Method | .NET 4.0 | .NET 4.5 | .NET Standard 1.3 | .NET Standard 2.0 |
+ -------- | --------- | --------- | --------------------| --------------------|
+AcceptAsync() | A | A | F | F |
+ConnectAsync(host, port) | A | A | F | F |
+ConnectAsync(address, port) | A | A | F | F |
+ConnectAsync(addresses, port) | A | A | F | F |
+ConnectAsync(endpoint) | A | A | F | F |
+DisconnectAsync(reuseSocket) | A | A | NS | A |
+ReceiveAsync(buffer, offset, size, socketFlags) | A | A | A | A |
+ReceiveAsync(buffers, socketFlags) | A | A | F | F |
+SendAsync(buffer, offset, size, socketFlags) | A | A | A | A |
+SendAsync(buffers, socketFlags) | A | A | F | F |
+SendFileAsync(filename) | A | A | NS | A |
+SendMessageAsync(message, encoding, socketFlags) | A | A | A | A |
+SendMessageAsync(message, encoding, buffer, bufferIndex, socketFlags) | A | A | A | A |
+SendMessageAsync(chars, index, count, encoding, socketFlags) | A | A | A | A |
+SendMessageAsync(chars, index, count, encoding, buffer, bufferIndex, socketFlags) | A | A | A | A |
+SendToAsync(buffer, offset, size, socketFlags, endpoint) | A | A | A | A |
+
+Legend:
+* _A_ - available;
+* _F_ - provided by the framework;
+* _NS_ - not supported;
+
 ## Usage
 ```csharp
 using (var socket = new Socket(SocketType.Stream, ProtocolType.Tcp))
